@@ -37,7 +37,12 @@ Once you finish the assignment, submit a URL link to your repository or your pul
 
 3. List 3 tasks that can be accomplished with native SQL that you cannot do with JPQL. Explain why you would choose to use native SQL over JPQL for these specific tasks.
 
-<br>
+   - Get a better performance is critical.
+   - Use database-specific features that are not available in JPQL (specific keywords, functions or stored procedures).
+
+   <br>
+## Resources
+    - https://www.baeldung.com/spring-boot-data-sql-and-schema-sql
 
 ## FAQs
 

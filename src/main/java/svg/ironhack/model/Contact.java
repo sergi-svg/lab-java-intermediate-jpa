@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @Entity
@@ -13,14 +15,22 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String title;
-    private String company;
-    @AttributeOverrides({
-            @AttributeOverride(name="firstName", column = @Column(name = "first_name")),
-            @AttributeOverride(name="lastName", column = @Column(name = "last_name")),
-            @AttributeOverride(name="middleName", column = @Column(name = "middle_name")),
-    })
+
     @Embedded
     private Name name;
+
+    @Embedded
+    private Address address;
+
+    @AttributeOverrides({
+            @AttributeOverride(name="streetAddress", column = @Column(name = "secondary_street_address")),
+            @AttributeOverride(name="city", column = @Column(name = "secondary_city")),
+            @AttributeOverride(name="postalCode", column = @Column(name = "secondary_postal_code"))
+    })
+    @Embedded
+    private Address secondaryAddress;
+
+    @OneToMany(mappedBy = "contact")
+    private List<Task> tasks;
 
 }

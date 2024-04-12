@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "task")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "task_type")
 public class Task {
 
     @Id
@@ -18,6 +20,10 @@ public class Task {
     private String title;
     @Column(name = "due_date")
     private String dueDate;
+    @Enumerated
     private TaskStatus status;
+    @ManyToOne
+    private Contact contact;
+
 
 }
