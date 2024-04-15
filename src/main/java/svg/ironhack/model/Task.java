@@ -25,5 +25,4 @@ public class Task {
     @ManyToOne
     private Contact contact;
 
-
 }
