@@ -17,17 +17,15 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Embedded
     private Name name;
-
     @Embedded
     private Address address;
 
     @AttributeOverrides({
-            @AttributeOverride(name="streetAddress", column = @Column(name = "secondary_street_address")),
             @AttributeOverride(name="city", column = @Column(name = "secondary_city")),
-            @AttributeOverride(name="postalCode", column = @Column(name = "secondary_postal_code"))
+            @AttributeOverride(name="postalCode", column = @Column(name = "secondary_postal_code")),
+            @AttributeOverride(name="streetAddress", column = @Column(name = "secondary_street_address"))
     })
     @Embedded
     private Address secondaryAddress;
